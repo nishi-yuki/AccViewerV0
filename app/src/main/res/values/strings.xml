@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">AccViewerV0</string>
-    <string name="empty_text_view">acc</string>
+    <string name="empty_text_view">loading</string>
 </resources>
