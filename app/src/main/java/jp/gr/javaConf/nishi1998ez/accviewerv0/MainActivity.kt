@@ -70,7 +70,7 @@ class MySensorEventListener(mActivity : MainActivity) : SensorEventListener {
             }
 
             val strTmp =
-                        "加速度センサー\nX : $accX\nY : $accY\nZ : $accZ\nALL : $accAll\n\n" +
+                        "X : $accX\nY : $accY\nZ : $accZ\nALL : $accAll\n\n" +
                         "MAX : $accAllMax\nMIN : $accAllMin"
             mAct.text4acc.setText(strTmp)
         }
