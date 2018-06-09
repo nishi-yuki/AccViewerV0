@@ -10,11 +10,14 @@ import android.hardware.SensorManager
 import kotlin.math.pow
 import kotlin.math.sqrt
 
+const val DISPLAY_CYCLE = 5
+
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mSensorManager : SensorManager
     private lateinit var msel : MySensorEventListener
+
     internal lateinit var text4acc : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,6 +48,7 @@ class MySensorEventListener(mActivity : MainActivity) : SensorEventListener {
     private val mAct = mActivity
     private var accAllMax : Float = 0F
     private var accAllMin : Float = -1F
+    private var count = 0
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
         //nothing to do
@@ -69,10 +73,15 @@ class MySensorEventListener(mActivity : MainActivity) : SensorEventListener {
                 accAllMin = accAll
             }
 
-            val strTmp =
+
+            count += 1
+            if (count > DISPLAY_CYCLE) {
+                count = 0
+                val strTmp =
                         "X : $accX\nY : $accY\nZ : $accZ\nALL : $accAll\n\n" +
-                        "MAX : $accAllMax\nMIN : $accAllMin"
-            mAct.text4acc.setText(strTmp)
+                                "MAX : $accAllMax\nMIN : $accAllMin"
+                mAct.text4acc.setText(strTmp)
+            }
         }
     }
 }
