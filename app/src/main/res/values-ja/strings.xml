@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name">加速度計測</string>
     <string name="empty_text_view">読み込み中</string>
+    <string name="reset_MAXandMIN">初期化</string>
 </resources>

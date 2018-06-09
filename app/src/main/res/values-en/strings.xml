@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name">AccViewerV0</string>
     <string name="empty_text_view">loading</string>
+    <string name="reset_MAXandMIN">reset</string>
 </resources>

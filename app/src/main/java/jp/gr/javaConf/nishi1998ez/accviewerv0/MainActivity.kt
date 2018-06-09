@@ -7,6 +7,7 @@ import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
+import android.widget.Button
 import kotlin.math.pow
 import kotlin.math.sqrt
 
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var mSensorManager : SensorManager
     private lateinit var msel : MySensorEventListener
+    private lateinit var resetButton : Button
 
     internal lateinit var text4acc : TextView
 
@@ -24,9 +26,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        text4acc = findViewById(R.id.text_view4acc)
         mSensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
         msel = MySensorEventListener(this)
+        resetButton = findViewById(R.id.reset_button)
+        text4acc = findViewById(R.id.text_view4acc)
+
+        resetButton.setOnClickListener { msel.reset() }
     }
 
     override fun onResume() {
@@ -83,5 +88,9 @@ class MySensorEventListener(mActivity : MainActivity) : SensorEventListener {
                 mAct.text4acc.setText(strTmp)
             }
         }
+    }
+    fun reset() {
+        accAllMax = 0F
+        accAllMin = -1F
     }
 }
